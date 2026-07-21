@@ -20,6 +20,9 @@ jobs:
         config:
 # NEW IMAGES HERE: #
 #######   - {dir: directory_path,   name: 'name its called on dockerhub'}
+          - {dir: ocs-bio-containers/activity, name: 'bioocs/ocs-bio-containers-wrangling'}
+          - {dir: ocs-bio-containers/base, name: 'bioocs/ocs-bio-containers-base'}
+          - {dir: ocs-bio-containers/continued-learning, name: 'bioocs/ocs-bio-containers-cont'}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
