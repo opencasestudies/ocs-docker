@@ -1,0 +1,41 @@
+# Candace Savonen May 2022
+
+name: Manual build of docker image
+
+on:
+  workflow_dispatch:
+    inputs:
+      directory:
+        description: 'File path on GitHub to Dockerfile? e.g. base_ottr'
+        required: true
+        type: string
+      tag:
+        description: 'Tag e.g. jhudsl/base_ottr:main'
+        required: true
+        type: string
+      dockerhubpush:
+        description: 'Push to Dockerhub? true or false'
+        required: false
+        default: 'false'
+        type: string
+
+jobs:
+
+  build-it:
+    name: Docker Build - ${{ inputs.directory }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          
+      - name: Docker build
+        uses: ./.github/workflows/
+        with:
+          directory: ${{ inputs.directory }}
+          tag: ${{ inputs.tag }}
+          dockerhubpush: ${{ inputs.dockerhubpush }}
+          token: ${{ secrets.GH_PAT }}
+          dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+          dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}

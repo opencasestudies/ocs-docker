@@ -1,0 +1,46 @@
+# Candace Savonen Jan 2025
+
+name: Merge to main action
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**/Dockerfile'
+
+jobs:
+
+  dockerfile-check:
+    name: Detect changed Dockerfile - ${{ matrix.config.dir }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+# NEW IMAGES HERE: #
+#######   - {dir: directory_path,   name: 'name its called on dockerhub'}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get specific changed files
+        id: image_name
+        uses: tj-actions/changed-files@v46.0.3
+        with:
+          files: ${{ matrix.config.dir }}/*
+
+      - run: echo ${{steps.image_name.outputs.any_changed}}
+
+      - name: Docker build
+        if: ${{ steps.image_name.outputs.any_changed == 'true'}}
+        uses: ./.github/workflows/
+        with:
+          directory: ${{ matrix.config.dir }}
+          tag: ${{ matrix.config.name }}
+          dockerhubpush: false
+          token: ${{ secrets.GH_PAT }}
+          dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+          dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
