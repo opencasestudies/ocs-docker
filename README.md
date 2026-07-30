@@ -24,10 +24,10 @@ Maintainer: `kweav`
 
   * `activity`: the Dockerfile is adjusted to add a package (`patchwork`) for the data wrangling part of the case study
     * Image name: `ocs-bio-containers-wrangling`
-    * On Dockerhub?
+    * On Docker Hub: yes (7/30/26) `bioocs` org, tag `main`
   * `base`: the Dockerfile used throughout the beginning of the case study with various data visualization packages as well as `ggpubr`, but not `patchwork` yet.
     * Image name: `ocs-bio-containers-base`
-    * On Dockerhub?
+    * On Docker Hub: yes (7/30/26) `bioocs` org, tag `main` and previously tag `dev` (7/21/26)
   * `continued-learning`: The Dockerfile adjusted to add `ggrepel` to the `activity` image.
     * Image name: `ocs-bio-containers-cont`
-    * On Dockerhub?
+    * On Docker Hub: yes (7/30/26) `bioocs` org, tag `main`
