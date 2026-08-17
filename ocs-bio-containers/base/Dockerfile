@@ -10,6 +10,7 @@ RUN arch="$(dpkg --print-architecture)" \
       libpng-dev \
       libicu-dev \
       libpcre2-dev \
+      libfreetype6-dev \
  && if [ "$arch" = "amd64" ]; then R CMD javareconf; fi \
  && rm -rf /var/lib/apt/lists/*
 
