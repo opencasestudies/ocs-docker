@@ -55,5 +55,5 @@ runs:
         push: ${{ inputs.dockerhubpush }}
         context: ${{ inputs.directory }}
         file: ${{ inputs.directory }}/Dockerfile
-        platforms: linux/amd64
+        platforms: linux/amd64,linux/arm64
         tags: ${{ inputs.tag }}
