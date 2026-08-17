@@ -3,13 +3,14 @@ FROM rocker/tidyverse:4.5.3@sha256:913d87bd9b81480b97bd4fc18e619e71d12b0a034bc80
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install Java + minimal system libs needed for your R packages
-RUN apt-get update \
+RUN arch="$(dpkg --print-architecture)" \
+ && apt-get update \
  && apt-get install -y --no-install-recommends \
-    openjdk-11-jre-headless \
-    libpng-dev \
-    libicu-dev \
-    libpcre2-dev \
- && R CMD javareconf \
+      openjdk-11-jre-headless \
+      libpng-dev \
+      libicu-dev \
+      libpcre2-dev \
+ && if [ "$arch" = "amd64" ]; then R CMD javareconf; fi \
  && rm -rf /var/lib/apt/lists/*
 
 # Install R packages
