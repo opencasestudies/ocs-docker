@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Install Java + minimal system libs needed for your R packages
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
-    openjdk-11-jdk \
+    openjdk-11-jre-headless \
     libpng-dev \
     libicu-dev \
     libpcre2-dev \
