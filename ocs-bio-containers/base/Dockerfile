@@ -10,10 +10,6 @@ RUN arch="$(dpkg --print-architecture)" \
       libpng-dev \
       libicu-dev \
       libpcre2-dev \
-      libfreetype6-dev \
-      libssl-dev \
-      libxml2-dev \
-      libcairo2-dev \
  && if [ "$arch" = "amd64" ]; then R CMD javareconf; fi \
  && rm -rf /var/lib/apt/lists/*
 
@@ -24,5 +20,4 @@ RUN install2.r --error --deps TRUE \
     here \
     bubbleHeatmap \
     ggnetwork \
-    ggpubr \
     gt
