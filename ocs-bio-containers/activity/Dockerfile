@@ -14,11 +14,13 @@ RUN apt-get update \
 
 # Install R packages
 RUN install2.r --error --deps TRUE \
-    rJava \
-    tabulapdf \
-    here \
     bubbleHeatmap \
     ggnetwork \
     ggpubr \
     gt \
-    patchwork
+    here \
+    patchwork \
+    rJava \
+    tabulapdf \
+ && rm -rf /tmp/downloaded_packages \
+ && rm -rf /root/.cache
