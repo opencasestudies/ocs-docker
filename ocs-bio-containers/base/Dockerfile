@@ -20,4 +20,6 @@ RUN install2.r --error --deps TRUE \
     bubbleHeatmap \
     ggnetwork \
     ggpubr \
-    gt
+    gt \
+ && rm -rf /tmp/downloaded_packages \
+ && rm -rf /root/.cache
