@@ -31,3 +31,24 @@ Maintainer: `kweav`
   * `continued-learning`: The Dockerfile adjusted to add `ggrepel` to the `activity` image.
     * Image name: `ocs-bio-containers-cont`
     * On Docker Hub: yes (7/30/26) `bioocs` org, tag `main`
+
+### `ocs-bio-spatial-transcriptomics`
+
+Maintainer: `kweav`
+
+* Dockerfile is based off of the `dev` version of `ottr_viz`.
+  * Can support OTTR rendering
+  * Has visualization packages such as `ggpubr`, `patchwork`, etc. that will be used in this case study.
+* Dockerfile includes some dependencies in order to install the packages we especially need for this case study:
+  * `GEOquery`
+  * `arrow`
+  * `rhdf5`
+  * `Matrix`
+  * `spatialGE`
+  * ... [others listed here](https://github.com/opencasestudies/ocs-bio-spatial-transcriptomics/issues/8)
+* Image name: `ocs-bio-spatial-transcriptomics`
+* On Docker Hub: yes (9/30/26)
+  * org: `bioocs`
+  * tag: `main`
+  * platform: `linux/amd64`
+  * manual rather than through the workflows 
