@@ -35,3 +35,5 @@ RUN Rscript -e "options(warn = 2); remotes::install_version( \
 
 RUN Rscript -e "options(warn = 2); remotes::install_github('fridleylab/spatialGE')"
 
+RUN Rscript -e "options(warn =2); remotes::install_github('clauswilke/colorblindr')"
+
